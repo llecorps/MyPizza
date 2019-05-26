@@ -1,0 +1,13 @@
+version: '2'
+services:
+  mypizza.db:
+    image: postgres:9.4
+    ports:
+      - "127.0.0.1:9032:5432"
+    volumes:
+#      - "./data/db:/var/lib/postgresql/data"
+       - "./init/db/docker-entrypoint-initdb.d:/docker-entrypoint-initdb.d"
+    environment:
+      - POSTGRES_DB=db_mypizza
+      - POSTGRES_USER=usr_mypizza
+      - POSTGRES_PASSWORD=mypizza
